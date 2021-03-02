@@ -23,86 +23,86 @@ const lock = new Lock();
 const connectors = { injected, fortmatic, portis, walletconnect, walletlink };
 
 for (const connectorId in connectors) {
-    const connector = {
-        key: connectorId,
-        connector: connectors[connectorId],
-        options: config.connectors[connectorId],
-    };
-    lock.addConnector(connector);
+  const connector = {
+    key: connectorId,
+    connector: connectors[connectorId],
+    options: config.connectors[connectorId]
+  };
+  lock.addConnector(connector);
 }
 
 export function hasInjectedProvider(): boolean {
-    return !!window.ethereum;
+  return !!window.ethereum;
 }
 
 export function getConnectorName(connectorId: string): string {
-    if (connectorId === 'injected') {
-        const provider = window.ethereum;
-        if (provider.isMetaMask) {
-            return 'MetaMask';
-        }
-        if (provider.isImToken) {
-            return 'imToken';
-        }
-        if (provider.isStatus) {
-            return 'Status';
-        }
-        if (provider.isTrust) {
-            return 'Trust Wallet';
-        }
-        if (provider.isFrame) {
-            return 'Frame';
-        }
-        return 'Browser Wallet';
+  if (connectorId === 'injected') {
+    const provider = window.ethereum;
+    if (provider.isMetaMask) {
+      return 'MetaMask';
     }
-    if (connectorId === 'fortmatic') {
-        return 'Fortmatic';
+    if (provider.isImToken) {
+      return 'imToken';
     }
-    if (connectorId === 'portis') {
-        return 'Portis';
+    if (provider.isStatus) {
+      return 'Status';
     }
-    if (connectorId === 'walletconnect') {
-        return 'WalletConnect';
+    if (provider.isTrust) {
+      return 'Trust Wallet';
     }
-    if (connectorId === 'walletlink') {
-        return 'Coinbase Wallet';
+    if (provider.isFrame) {
+      return 'Frame';
     }
-    return 'Unknown';
+    return 'Browser Wallet';
+  }
+  if (connectorId === 'fortmatic') {
+    return 'Fortmatic';
+  }
+  if (connectorId === 'portis') {
+    return 'Portis';
+  }
+  if (connectorId === 'walletconnect') {
+    return 'WalletConnect';
+  }
+  if (connectorId === 'walletlink') {
+    return 'Coinbase Wallet';
+  }
+  return 'Unknown';
 }
 
 export function getConnectorLogo(connectorId: string): string {
-    if (connectorId === 'injected') {
-        const provider = window.ethereum;
-        if (provider.isMetaMask) {
-            return metamaskLogo;
-        }
-        if (provider.isImToken) {
-            return imtokenLogo;
-        }
-        if (provider.isStatus) {
-            return statusLogo;
-        }
-        if (provider.isTrust) {
-            return trustwalletLogo;
-        }
-        if (provider.isFrame) {
-            return frameLogo;
-        }
-        return defaultLogo;
+  if (connectorId === 'injected') {
+    const provider = window.ethereum;
+    if (provider.isMetaMask) {
+      return metamaskLogo;
     }
-    if (connectorId === 'fortmatic') {
-        return fortmaticLogo;
+    if (provider.isImToken) {
+      return imtokenLogo;
     }
-    if (connectorId === 'portis') {
-        return portisLogo;
+    if (provider.isStatus) {
+      return statusLogo;
     }
-    if (connectorId === 'walletconnect') {
-        return walletconnectLogo;
+    if (provider.isTrust) {
+      return trustwalletLogo;
     }
-    if (connectorId === 'walletlink') {
-        return walletlinkLogo;
+    if (provider.isFrame) {
+      return frameLogo;
     }
     return defaultLogo;
+  }
+  if (connectorId === 'fortmatic') {
+    return fortmaticLogo;
+  }
+  if (connectorId === 'portis') {
+    return portisLogo;
+  }
+  if (connectorId === 'walletconnect') {
+    return walletconnectLogo;
+  }
+  if (connectorId === 'walletlink') {
+    return walletlinkLogo;
+  }
+  return defaultLogo;
 }
 
 export default lock;

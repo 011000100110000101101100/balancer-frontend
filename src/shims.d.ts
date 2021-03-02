@@ -1,14 +1,15 @@
 declare module '*.vue' {
-    import { ComponentOptions } from 'vue';
-    const component: ComponentOptions;
-    export default component;
+  import { ComponentOptions } from 'vue';
+  const component: ComponentOptions;
+  export default component;
 }
 
 declare module '*.svg' {
-    const content: any;
-    export default content;
+  const content: any;
+  export default content;
 }
 
 interface Window {
-    ethereum: any;
+  // @ts-ignore
+  ethereum: any;
 }
