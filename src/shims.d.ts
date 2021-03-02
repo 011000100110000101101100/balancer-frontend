@@ -12,5 +12,3 @@ declare module '*.svg' {
 interface Window {
     ethereum: any;
 }
-
-declare const APP_COMMIT: string;
