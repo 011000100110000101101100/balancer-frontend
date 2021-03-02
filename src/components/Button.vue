@@ -8,12 +8,7 @@
 <script>
 import { defineComponent } from 'vue';
 
-import LoadingIndicator from '@/components/LoadingIndicator.vue';
-
 export default defineComponent({
-  components: {
-    LoadingIndicator
-  },
   props: {
     text: {
       type: String,

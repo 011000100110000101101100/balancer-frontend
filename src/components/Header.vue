@@ -29,14 +29,7 @@ import { defineComponent, ref, computed } from 'vue';
 
 import Storage from '@/utils/storage';
 
-import Account from '@/components/Account.vue';
-import Icon from '@/components/Icon.vue';
-
 export default defineComponent({
-  components: {
-    Account,
-    Icon
-  },
   setup() {
     // eslint-disable-next-line no-undef
     const isDev = ref(process.env.APP_ENV === 'dev');

@@ -54,16 +54,9 @@ import { RootState } from '@/store';
 import { ValidationError, validateNumberInput } from '@/utils/validation';
 import Storage from '@/utils/storage';
 
-import ButtonText from '@/components/ButtonText.vue';
-import ModalBase from '@/components/ModalBase.vue';
-
 const slippageOptions = [0.001, 0.002, 0.005, 0.01];
 
 export default defineComponent({
-  components: {
-    ButtonText,
-    ModalBase
-  },
   props: {
     open: {
       type: Boolean,

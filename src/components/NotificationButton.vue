@@ -17,12 +17,7 @@
 <script>
 import { defineComponent, computed } from 'vue';
 
-import Icon from '@/components/Icon.vue';
-
 export default defineComponent({
-  components: {
-    Icon
-  },
   props: {
     type: {
       type: String,

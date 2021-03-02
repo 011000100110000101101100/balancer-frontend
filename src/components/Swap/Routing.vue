@@ -103,9 +103,6 @@ import { Swap, Pool } from '@balancer-labs/sor/dist/types';
 import { RootState } from '@/store';
 import { getPoolLink } from '@/utils/helpers';
 
-import AssetIcon from '@/components/AssetIcon.vue';
-import Icon from '@/components/Icon.vue';
-
 interface Route {
   share: number;
   hops: Hop[];
@@ -127,10 +124,6 @@ interface Asset {
 }
 
 export default defineComponent({
-  components: {
-    AssetIcon,
-    Icon
-  },
   props: {
     addressIn: {
       type: String,

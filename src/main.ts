@@ -1,5 +1,7 @@
 import { createApp } from 'vue';
 import { createWebHashHistory, createRouter } from 'vue-router';
+import upperFirst from 'lodash/upperFirst';
+import camelCase from 'lodash/camelCase';
 import store from './store';
 import '@/utils/fathom';
 
@@ -26,6 +28,15 @@ app.directive('autofocus', {
 
 app.use(router);
 app.use(store);
+
+const requireComponent = require.context('@/components', true, /[\w-]+\.vue$/);
+requireComponent.keys().forEach(fileName => {
+  const componentConfig = requireComponent(fileName);
+  const componentName = upperFirst(
+    camelCase(fileName.replace(/^\.\//, '').replace(/\.\w+$/, ''))
+  );
+  app.component(componentName, componentConfig.default || componentConfig);
+});
 
 app.mount('#app');
 

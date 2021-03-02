@@ -15,12 +15,7 @@
 <script>
 import { defineComponent } from 'vue';
 
-import Notification from '@/components/Notification.vue';
-
 export default defineComponent({
-  components: {
-    Notification
-  },
   props: {
     items: {
       type: Array,

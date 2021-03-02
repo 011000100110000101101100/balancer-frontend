@@ -74,20 +74,7 @@ import { scale } from '@/utils/helpers';
 import { formatAddress, getAccountLink } from '@/utils/helpers';
 import config from '@/config';
 
-import AssetIcon from '@/components/AssetIcon.vue';
-import ButtonText from '@/components/ButtonText.vue';
-import Icon from '@/components/Icon.vue';
-import Jazzicon from '@/components/Jazzicon.vue';
-import ModalBase from '@/components/ModalBase.vue';
-
 export default defineComponent({
-  components: {
-    AssetIcon,
-    ButtonText,
-    Icon,
-    Jazzicon,
-    ModalBase
-  },
   props: {
     open: {
       type: Boolean,

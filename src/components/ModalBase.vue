@@ -20,12 +20,7 @@
 <script>
 import { defineComponent } from 'vue';
 
-import Icon from '@/components/Icon.vue';
-
 export default defineComponent({
-  components: {
-    Icon
-  },
   props: {
     title: {
       type: String,

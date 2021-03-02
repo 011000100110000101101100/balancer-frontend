@@ -33,7 +33,7 @@
         @unlock="unlock"
         @swap="swap"
       />
-      <Routing
+      <SwapRouting
         :address-in="assetInAddressInput"
         :amount-in="assetInAmountInput"
         :address-out="assetOutAddressInput"
@@ -74,13 +74,6 @@ import Storage from '@/utils/storage';
 import Swapper from '@/web3/swapper';
 import Helper from '@/web3/helper';
 import { RootState } from '@/store';
-
-import MessageReimbursement from '@/components/MessageReimbursement.vue';
-import ModalAssetSelector from '@/components/ModalAssetSelector.vue';
-import Routing from '@/components/swap/Routing.vue';
-import Settings from '@/components/Settings.vue';
-import SwapButton from '@/components/swap/Button.vue';
-import SwapPair from '@/components/swap/Pair.vue';
 import { setGoal } from '@/utils/fathom';
 
 // eslint-disable-next-line no-undef
@@ -93,14 +86,6 @@ interface Pair {
 }
 
 export default defineComponent({
-  components: {
-    MessageReimbursement,
-    ModalAssetSelector,
-    Routing,
-    Settings,
-    SwapButton,
-    SwapPair
-  },
   setup() {
     let sor: SOR | undefined = undefined;
 

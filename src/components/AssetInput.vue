@@ -58,11 +58,6 @@ import { useStore } from 'vuex';
 import { RootState } from '@/store';
 import { ETH_KEY, scale } from '@/utils/helpers';
 
-import AssetIcon from '@/components/AssetIcon.vue';
-import ButtonText from '@/components/ButtonText.vue';
-import Icon from '@/components/Icon.vue';
-import Tooltip from '@/components/Tooltip.vue';
-
 export interface Label {
   text: string;
   style: LabelStyle;
@@ -75,12 +70,6 @@ export enum LabelStyle {
 }
 
 export default defineComponent({
-  components: {
-    AssetIcon,
-    ButtonText,
-    Icon,
-    Tooltip
-  },
   props: {
     modalKey: {
       type: String,

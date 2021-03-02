@@ -17,20 +17,7 @@ import { useStore } from 'vuex';
 import { RootState } from '@/store';
 import Storage from '@/utils/storage';
 
-import Header from '@/components/Header.vue';
-import ModalAccount from '@/components/ModalAccount.vue';
-import ModalConnectorSelector from '@/components/ModalConnectorSelector.vue';
-import ModalSettings from '@/components/ModalSettings.vue';
-import NotificationList from '@/components/NotificationList.vue';
-
 export default defineComponent({
-  components: {
-    Header,
-    ModalAccount,
-    ModalConnectorSelector,
-    ModalSettings,
-    NotificationList
-  },
   setup() {
     const store = useStore<RootState>();
 

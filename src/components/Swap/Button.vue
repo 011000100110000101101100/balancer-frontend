@@ -18,8 +18,6 @@ import { RootState } from '@/store';
 import { ETH_KEY, scale } from '@/utils/helpers';
 import { SwapValidation } from '@/utils/validation';
 
-import Button from '@/components/Button.vue';
-
 enum Type {
   Connect,
   Unlock,
@@ -27,9 +25,6 @@ enum Type {
 }
 
 export default defineComponent({
-  components: {
-    Button
-  },
   props: {
     addressIn: {
       type: String,

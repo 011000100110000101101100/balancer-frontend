@@ -34,14 +34,7 @@ import { TransitionPresets, useTransition } from '@vueuse/core';
 
 import { NOTIFICATION_DURATION } from '@/store/modules/ui';
 
-import Icon from '@/components/Icon.vue';
-import NotificationButton from '@/components/NotificationButton.vue';
-
 export default defineComponent({
-  components: {
-    Icon,
-    NotificationButton
-  },
   props: {
     type: {
       type: String,

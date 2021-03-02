@@ -10,12 +10,7 @@ import { useStore } from 'vuex';
 
 import { RootState } from '@/store';
 
-import Icon from '@/components/Icon.vue';
-
 export default defineComponent({
-  components: {
-    Icon
-  },
   setup() {
     const store = useStore<RootState>();
 

@@ -14,7 +14,7 @@
     />
   </div>
   <div class="rate-wrapper">
-    <PairToggle @toggle="toggle" />
+    <SwapPairToggle @toggle="toggle" />
     <div class="rate-message">
       <span class="rate-label" @click="toggleRate">
         {{ rateMessage }}
@@ -51,16 +51,11 @@ import {
   validateNumberInput
 } from '@/utils/validation';
 
-import AssetInput, { LabelStyle } from '@/components/AssetInput.vue';
-import PairToggle from '@/components/swap/PairToggle.vue';
+import { LabelStyle } from '@/components/AssetInput.vue';
 
 const SLIPPAGE_WARNING = 0.02;
 
 export default defineComponent({
-  components: {
-    AssetInput,
-    PairToggle
-  },
   props: {
     addressIn: {
       type: String,

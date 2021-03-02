@@ -43,14 +43,7 @@ import { isAddress, scale } from '@/utils/helpers';
 import { RootState } from '@/store';
 import config from '@/config';
 
-import AssetIcon from '@/components/AssetIcon.vue';
-import ModalBase from '@/components/ModalBase.vue';
-
 export default defineComponent({
-  components: {
-    AssetIcon,
-    ModalBase
-  },
   props: {
     open: {
       type: Boolean,

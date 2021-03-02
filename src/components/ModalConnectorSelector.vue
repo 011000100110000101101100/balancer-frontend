@@ -28,12 +28,7 @@ import {
   getConnectorLogo
 } from '@/utils/connectors';
 
-import ModalBase from '@/components/ModalBase.vue';
-
 export default defineComponent({
-  components: {
-    ModalBase
-  },
   props: {
     open: {
       type: Boolean,

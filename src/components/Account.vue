@@ -25,14 +25,7 @@ import { useStore } from 'vuex';
 import { RootState } from '@/store';
 import { formatAddress } from '@/utils/helpers';
 
-import Button from '@/components/Button.vue';
-import Jazzicon from '@/components/Jazzicon.vue';
-
 export default defineComponent({
-  components: {
-    Button,
-    Jazzicon
-  },
   setup() {
     const store = useStore<RootState>();
 
