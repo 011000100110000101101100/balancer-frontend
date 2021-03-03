@@ -77,7 +77,7 @@ import { RootState } from '@/store';
 import { setGoal } from '@/utils/fathom';
 
 // eslint-disable-next-line no-undef
-const GAS_PRICE = process.env.APP_GAS_PRICE || '100000000000';
+const GAS_PRICE = process.env.VUE_APP_GAS_PRICE || '100000000000';
 const MAX_POOLS = 4;
 
 interface Pair {

@@ -32,7 +32,7 @@ import Storage from '@/utils/storage';
 export default defineComponent({
   setup() {
     // eslint-disable-next-line no-undef
-    const isDev = ref(process.env.APP_ENV === 'dev');
+    const isDev = ref(process.env.VUE_APP_ENV === 'dev');
     // eslint-disable-next-line no-undef
     const commit = ref(process.env.VUE_APP_COMMIT_SHA || '');
     const commitLabel = computed(() => commit.value.substr(0, 6));
