@@ -46,7 +46,7 @@ const configs = {
     ...kovan
   }
 };
-// eslint-disable-next-line no-undef
+
 const network = process.env.VUE_APP_DEFAULT_NETWORK || '1';
 
 const config: Config = configs[network];

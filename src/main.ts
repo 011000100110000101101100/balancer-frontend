@@ -7,7 +7,7 @@ import '@/utils/fathom';
 
 import App from './App.vue';
 
-import Swap from './pages/Swap.vue';
+import Swap from './views/Swap.vue';
 
 const routerHistory = createWebHashHistory();
 const router = createRouter({
