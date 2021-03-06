@@ -32,8 +32,7 @@ export const listMetadata: Record<string, string> = {
     'zerion': 'http://tokenlist.zerion.eth.link',
 };
 
-// this can be any list id, does not conform to any 1 data type
-// listMetaData is really only tokenList meta data
+// for lists of any type, not oriented toward token list only
 export const anyListMetadata: Record<string, string> = {
     [ELIGIBILE_TOKEN_LIST]: '',
 };

@@ -53,9 +53,7 @@ const actions = {
         const listId = Storage.getList();
         const list = await getTokenlist(listId);
         commit('addList', { listId, list });
-
         const eligibleTokensList = await getAnyListData(ELIGIBILE_TOKEN_LIST);
-        console.log(`assets.ts: addData: eligibleTokensList: `, eligibleTokensList)
         commit('addData', { id: ELIGIBILE_TOKEN_LIST, data: eligibleTokensList });
     },
     fetchLists: async({ commit }: ActionContext<AssetState, RootState>): Promise<void> => {

@@ -67,23 +67,15 @@ export default defineComponent({
             loading.value = true;
 
             try {
-                const poolAddress = '0x59a19d8c652fa0284f44113d0ff9aba70bd46fb4'; // TODO: extract for other pools/networks
+                const poolAddress = '0x59a19d8c652fa0284f44113d0ff9aba70bd46fb4'; // TODO: extract for dynamic appt
                 const eligibleTokensList = store.getters['assets/eligibleTokensList'];
-
-                // test delete perp token, usdc token
-                // delete eligibleTokensList["0xbc396689893d065f41bc2c6ecbee5e0085233447"];
-                // delete eligibleTokensList["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"];
-
-                console.log(`gasReimbursement: watch: eligibleTokensList: `, eligibleTokensList);
                 const totalSwaps = props.swaps.flat().filter(item => {
                     const passTokenIn = item.tokenIn in eligibleTokensList;
                     const passTokenOut = item.tokenOut in eligibleTokensList;
-                    console.log(`Swap token filter eligibility result: `, `tokenIn: ${item.tokenIn} : ${passTokenIn}, tokenOut: ${item.tokenOut} : ${passTokenOut}`);
+                    // console.log(`Swap token filter eligibility result: `, `tokenIn: ${item.tokenIn} : ${passTokenIn}, tokenOut: ${item.tokenOut} : ${passTokenOut}`);
                     return item.tokenIn in eligibleTokensList && item.tokenOut in eligibleTokensList;
                 });
-                // console.log(`totalSwaps filtered elgibility results: len: `, res, res.length);
 
-                console.log(`gasReimbursement: watch: totalSwaps: `, totalSwaps)
                 const balWethPool = props.pools.find(pool => pool.id === poolAddress);
 
                 if (balWethPool) {
@@ -109,15 +101,15 @@ export default defineComponent({
                     balReimburseAmountUSD.value = gasPriceUSD.toFixed(2);
 
                     // TODO: debug
-                    console.log('GasReimbursement.vue: watch(props): Calculation Info:',
-                        'gasLimitGwei:', gasLimitGwei.toNumber(),
-                        'gasPriceGwei:', gasPriceGwei.toNumber(),
-                        'gasPriceETH:', gasPriceETH.toFixed(6),
-                        'balEthSpotPrice:', balEthSpotPrice.toFixed(6),
-                        'balAmount:', balAmount.toFixed(6),
-                        'gasPriceUSD:', gasPriceUSD.toFixed(2),
-                        'balReimburseAmount:', balReimburseAmount.value,
-                        'balReimburseAmountUSD.value:', balReimburseAmountUSD.value);
+                    // console.log('GasReimbursement.vue: watch(props): Calculation Info:',
+                    //     'gasLimitGwei:', gasLimitGwei.toNumber(),
+                    //     'gasPriceGwei:', gasPriceGwei.toNumber(),
+                    //     'gasPriceETH:', gasPriceETH.toFixed(6),
+                    //     'balEthSpotPrice:', balEthSpotPrice.toFixed(6),
+                    //     'balAmount:', balAmount.toFixed(6),
+                    //     'gasPriceUSD:', gasPriceUSD.toFixed(2),
+                    //     'balReimburseAmount:', balReimburseAmount.value,
+                    //     'balReimburseAmountUSD.value:', balReimburseAmountUSD.value);
                 }
             } catch(e) {
                 console.error('error calculating estimate: ', e);
