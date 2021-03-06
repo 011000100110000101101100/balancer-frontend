@@ -1,12 +1,11 @@
 <template>
     <div class="container">
         <div>
-            <Icon
+            <img
                 class="message-icon"
-                :title="'brand'"
-            />
+                :src="handsIcon"
+            >
         </div>
-
         <div>
             <span class="message-title">
                 High gas fees? We'll refund you!<br>
@@ -20,7 +19,6 @@
 
 <script lang="ts">
 
-// TODO: cleanup
 import { ref, PropType, defineComponent, watch, computed } from 'vue';
 import { useStore } from 'vuex';
 import { Swap, Pool } from '@balancer-labs/sor/dist/types';
@@ -30,9 +28,8 @@ import BigNumber from 'bignumber.js';
 import Icon from '@/components/Icon.vue';
 import Helper from '@/web3/helper';
 import { getTokenPriceUSD, getBALETHSpotPrice } from '@/utils/helpers';
-
-// TODO: eligibility list:
-import eligibletokenlist from '@balancer-labs/assets/lists/eligible.json';
+import defaultIcon from '@/assets/defaultAssetIcon.svg';
+import handsClapIcon from '@/assets/handsClapIcon.png';
 
 export default defineComponent({
     components: {
@@ -69,15 +66,29 @@ export default defineComponent({
         watch(() => props, async (props) => {
             loading.value = true;
 
-            // TODO: optimizations: store, call freq, fallback, format(), cache - (gas, price, spot, props)
             try {
                 const poolAddress = '0x59a19d8c652fa0284f44113d0ff9aba70bd46fb4'; // TODO: extract for other pools/networks
-                const flattenedSwaps = props.swaps.flat();
+                const eligibleTokensList = store.getters['assets/eligibleTokensList'];
+
+                // test delete perp token, usdc token
+                // delete eligibleTokensList["0xbc396689893d065f41bc2c6ecbee5e0085233447"];
+                // delete eligibleTokensList["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"];
+
+                console.log(`gasReimbursement: watch: eligibleTokensList: `, eligibleTokensList);
+                const totalSwaps = props.swaps.flat().filter(item => {
+                    const passTokenIn = item.tokenIn in eligibleTokensList;
+                    const passTokenOut = item.tokenOut in eligibleTokensList;
+                    console.log(`Swap token filter eligibility result: `, `tokenIn: ${item.tokenIn} : ${passTokenIn}, tokenOut: ${item.tokenOut} : ${passTokenOut}`);
+                    return item.tokenIn in eligibleTokensList && item.tokenOut in eligibleTokensList;
+                });
+                // console.log(`totalSwaps filtered elgibility results: len: `, res, res.length);
+
+                console.log(`gasReimbursement: watch: totalSwaps: `, totalSwaps)
                 const balWethPool = props.pools.find(pool => pool.id === poolAddress);
 
                 if (balWethPool) {
                     // get gas limit based on swaps
-                    const numSwaps = flattenedSwaps.length;
+                    const numSwaps = totalSwaps.length;
                     const gasLimitGwei =    new BigNumber((numSwaps === 1 ? 130000 :
                                                             numSwaps === 2 ? 220000 :
                                                             numSwaps === 3 ? 300000 :
@@ -139,17 +150,17 @@ export default defineComponent({
             return `$${new BigNumber(amount).toFixed(2)}`; // TODO: check NaN
         }
 
+        const handsIcon = ref(handsClapIcon);
+
         return {
             loading,
             messageGasReimbursed,
+            handsIcon,
         };
     },
 });
 </script>
 
-// TODO: cleanup and test style-css-design, flex, crossXbrowser, mobile, pwa, resize, color
-// TODO: defaults, placeholder, fallback, loader, suspense¿
-// TODO: prevent POP from load / show fee message / temp removed loading indicator
 <style scoped>
 
 .container {
